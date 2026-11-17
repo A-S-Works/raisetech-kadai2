@@ -1,0 +1,2 @@
+# raisetech-kadai2
+
