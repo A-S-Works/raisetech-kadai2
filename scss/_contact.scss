@@ -1,0 +1,243 @@
+@use 'variables' as v;
+@use 'mixin' as m;
+
+.contact-page {
+    .main-visual {
+        height: 300px;
+
+        @include m.tb {
+            height: 372px;
+        }
+
+        @include m.pc{
+            height: 383px;
+        }
+
+        &__image {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+            @include m.tb {
+                display: none;
+            }
+
+            @include m.pc {
+                display: block;
+            }
+
+            &-tb {
+                display: none;
+
+                @include m.tb{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                }
+
+                @include m.pc {
+                    display: none;
+                }
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+
+                @include m.tb {
+                    height: 372px;
+                }
+            }
+        }
+
+        &__contents {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+
+            @include m.tb {
+                left: 32px;
+            }
+
+            @include m.pc {
+                left: 180px;
+            }
+        }
+
+        &__title {
+            width: auto;
+            height: auto;
+            padding: 10px 24px 13px;
+            font-size: 28px;
+            margin: 0;
+
+            @include m.tb {
+                padding: 10px 40px 13px;
+                font-size: 36px;
+            }
+        }
+        
+    }
+
+    .section {
+        padding: 0;
+
+        @include m.tb {
+            margin: 88px 0;
+            padding: 0 32px;
+        }
+
+        @include m.pc {
+            margin: 120px 30px 125px;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 56px;
+            margin-bottom: 70px;
+
+            @include m.tb{
+                margin: 0;
+                padding: 0;
+            }
+
+            @include m.pc{
+                width: 100%;
+                max-width: 1080px;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    &__body {
+        @include m.pc {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &__title {
+        font-size: 28px;
+        margin-bottom: 32px;
+
+        @include m.tb {
+            font-size: 32px;
+            margin-bottom: 88px;
+            text-align: center;
+        }
+
+        @include m.pc {
+            text-align: left;
+            min-width: 352px;
+        }
+    }
+
+    &__required {
+        display: inline-block;
+        margin-left: 7px;
+        padding: 0 6px 4px;
+        background-color: #C54A49;
+        color: v.$color-White;
+        font-size: 12px;
+        border-radius: 4px;
+    }
+
+    &__form {
+        font-size: 16px;
+        font-weight: bold;
+
+        @include m.tb {
+            margin: 0 auto;
+            max-width: 560px;
+        }
+
+        @include m.pc {
+            margin: 0;
+            width: 100%;
+            max-width: 560px;
+        }
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            & + & {
+                margin-top: 32px;
+            }
+        }
+
+        &-radio {
+            width: 190px;
+            font-weight: normal;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 24px;
+        }
+
+        &-agreement {
+            font-size: 14px;
+            font-weight: normal;
+            align-items: center;
+        }
+
+        &-submit {
+            width: 220px;
+            margin: 32px auto 0;
+            padding: 10px 74px;
+            background-color: v.$color-Gray;
+            color: v.$color-White;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: none;
+            cursor: pointer;
+
+            &-arrow {
+                position: absolute;
+                right: 16px;
+                width: 17px;
+                height: 1px;
+                background-color: v.$color-White;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 7px;
+                    height: 1px;
+                    border-top: 1px solid v.$color-White;
+                    transform: rotate(45deg);
+                    transform-origin: right center;
+                }
+            }
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px 17px 17px;
+            border: 1px solid v.$color-LightGray;
+            background-color: v.$color-White;
+            border-radius: 4px;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: v.$color-LightGray;
+            font-weight: normal;
+        }
+
+        textarea {
+            height: 147px;
+            resize: none;
+        }
+    }
+}
+

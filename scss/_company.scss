@@ -1,0 +1,207 @@
+@use 'variables' as v;
+@use 'mixin' as m;
+
+.company-page {
+    .main-visual {
+        height: 300px;
+
+        @include m.tb {
+            height: 372px;
+        }
+
+        @include m.pc{
+            height: 383px;
+        }
+
+        &__image {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+            @include m.tb {
+                display: none;
+            }
+
+            @include m.pc {
+                display: block;
+            }
+
+            &-tb {
+                display: none;
+
+                @include m.tb{
+                    display: block;
+                }
+
+                @include m.pc {
+                    display: none;
+                }
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__contents {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+
+            @include m.tb {
+                left: 32px;
+            }
+
+            @include m.pc {
+                left: 180px;
+            }
+        }
+
+        &__title {
+            width: auto;
+            height: auto;
+            padding: 10px 40px 13px;
+            font-size: 28px;
+            margin: 0;
+
+            @include m.tb {
+                padding: 10px 40px 13px;
+                font-size: 32px;
+            }
+
+            @include m.pc {
+                font-size: 36px;
+            }
+        }
+        
+    }
+
+    .section {
+        padding: 0;
+
+        @include m.tb {
+            margin: 88px 0;
+            padding: 0 32px;
+        }
+
+        @include m.pc {
+            margin: 120px;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 56px;
+
+            @include m.tb{
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: space-between;
+                gap: 24px;
+            }
+
+            @include m.pc{
+                width: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                gap: 40px;
+            }
+        }
+    }
+
+    &__title {
+        font-weight: 500;
+        font-size: 28px;
+        margin-bottom: 24px;
+
+        @include m.tb {
+            font-size: 32px;
+            min-width: 128px;
+        }
+    }
+
+    &__text {
+        font-size: 16px;
+    }
+
+    &__body {
+        margin: 24px 0;
+
+        @include m.tb {
+            margin: 0;
+            flex: 1;
+        }
+    }
+
+    &__image {
+        flex: 1;
+    }
+
+    &__table {
+        margin-top: 32px;
+        margin-bottom: 62px;
+        width: 100%;
+
+        @include  m.tb {
+            width: auto;
+            max-width: 720px;
+            margin: 0;
+        }
+
+        @include m.pc {
+            width: 100%;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-top: 1px solid v.$color-Gray;
+
+            @include m.tb {
+                width: auto;
+                display: table;
+            }
+
+            @include m.pc {
+                width: 100%;
+            }
+        }
+
+        tr {
+            display: block;
+            
+            @include m.tb {
+                display: table-row;
+            }
+        }
+
+        th,td {
+            display: block;
+            padding: 20px 0;
+            border-bottom: 1px solid v.$color-Gray;
+            text-align: center;
+
+            @include m.tb {
+                display: table-cell;
+                padding: 20px 32px;
+            }
+        }
+
+        th {
+            background-color: #E7E3DF;
+
+            @include m.tb {
+                width: 160px;
+            }
+        }
+
+        td {
+            @include m.tb {
+                text-align: left;
+            }
+        }
+
+    }
+}

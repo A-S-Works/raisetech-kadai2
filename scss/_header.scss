@@ -1,0 +1,145 @@
+@use 'variables' as v;
+@use 'mixin' as m;
+
+.header {
+    width: 100%;
+    height: 56px;
+    background-color: rgba(v.$color-White, $alpha: 0.7);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+
+    @include m.tb {
+        height: 64px;
+    }
+
+    &__logo {
+        margin-left: 20px;
+
+        @include m.tb {
+            margin-left: 27px;
+        }
+        
+        @include m.pc {
+            margin-left: 60px;
+        }
+
+    }
+
+    &__menu {
+        width: 56px;
+        height: 56px;
+        position: relative;
+        border: none;
+        display: flex;
+        background-color: v.$color-Gray;
+
+        @include m.tb {
+            display: none;
+        }
+
+        span {
+            position: absolute;
+            left: 50%;
+            width: 24px;
+            height: 2px;
+            background-color: v.$color-White;
+            transform: translateX(-50%);
+            transition: transform 0.3s opacity 0.3s;
+
+            &:nth-child(1) {
+                top: 20px;
+            }
+
+            &:nth-child(2) {
+                top: 28px;
+            }
+
+            &:nth-child(3) {
+                top: 36px;
+            }
+        }
+
+        &.is-open {
+            span {
+                width: 24px;
+                &:nth-child(1) {
+                    top: 28px;
+                    transform: translateX(-50%) rotate(35deg);
+                }
+
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+
+                &:nth-child(3) {
+                    top: 28px;
+                    transform: translateX(-50%) rotate(-35deg);
+                }
+
+            }
+        }
+    }
+}
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 252px;
+    height: 100vh;
+    background-color: rgba(v.$color-White, $alpha: 0.9);
+    display: none;
+
+    @include m.tb {
+        display: block;
+        position: static;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        padding: 99px 40px;
+        gap: 9px;  
+
+        @include m.tb {
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+    }
+
+    &__item {
+        a {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 400;
+            color: v.$color-Gray;
+
+            @include m.tb {
+                height: 64px;
+                font-size: 16px;
+                width: auto;
+                padding: 20px 12px;
+            }
+        }
+
+        &--contact {
+            a {
+                background-color: v.$color-Gray;
+                color: v.$color-White;
+            }
+        }
+    }
+}
